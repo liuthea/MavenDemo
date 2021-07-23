@@ -1,0 +1,5 @@
+memory divide to STACK and HEAP
+STACK: method, local variables, each thread has a new one
+HEAP: all objects
+
+primitive type: int long double short boolean char float byte

@@ -1,0 +1,13 @@
+singleton: public static Singleton instance=new Singleton();
+    private constructor to prohibit outer class to create instance
+Q: difference wait() and sleep(): wait is object level, sleep static. Thread.sleep()
+Q: callable and runnable: 1.callable return sth by Future, can throw exception
+Threadpool: avoid jvm frequent recycle create thread.
+    create method: ExecutorService(implement Executor),cachedThreadPool,Fixed~(n),Single~,Scheduled~
+    command: ExecutorService service = Executors.newFixedThreadPool(10);
+            service.execute();  //thread class implement runnable
+            service.submit();   //callable
+            service.shutdown();
+communication between thread!!
+Stream.iterate()
+

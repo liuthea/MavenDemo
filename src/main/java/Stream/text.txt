@@ -1,0 +1,79 @@
+ER design: entity relationship model
+entity:component data/ attribute relationship
+
+cardinality: number of times the entity participates
+           1-1/ 1 to many/ many to 1/ many to many
+participate constraint： total/partial participation: the entity must/may not participate(people own passport)
+
+constraints in relation model: domain/key/referential integrity constraint
+ domain constraint:field value should be atomic not composite not multivalue
+ key constraint: primary key unique define a row
+ referential integrity: must refer to a existing id
+
+ map ER diagram to relational model
+ person has passport 1:1 binary total participation
+ step1: map relationship/entity to table
+ step2: optimize
+    person table: person_id person_info   optimize
+    passport table: pass_id pass_info  ------------->  person_id person_info pass_id pass_info
+     table3:    pass_id person_id
+
+     1:1  paritial
+     table1: m_id m_info f_id
+     table2: f_id f_info
+
+     case3: binary n:1
+     case4: binary m:n   student course
+     std_id std_info
+
+ Database normolization: remove redundant, ensure logically, best 3rd normal form
+ 1 normal form: each cell single value, each record unique
+3rd: no transitive dependency (when changing non-key col,will not cause other non-key col change)
+
+columnar data store: columns grouped
+key/value data store :   large hashtable
+document: eg row: 1001  json body
+graph data store: node as entity, edge as relationship
+
+CAP: consistency, availability, partition tolerence
+~theorem: satisfy all three is impossible. P is required
+
+sharding:partition to different shard and replica:master-slave different copy of data
+
+mongoDB: mongod -> database instance
+          mongos: sharding process,decide which mongods process the query
+          mongo: interactive shell
+
+         functionality: dynamic schema, no DDL
+                       secondary index
+                       master-slave architecture
+                       horizontal scaling, add more node to the system
+                       no joins nor transactions
+                       CP
+
+redis: key-value key is a set has unique data, value is double linkedlist
+      cached aside, cache hit, cache miss
+      2 persistence mechanism:
+          RDB performs point-in-time snapshot of dataset at specified intervals
+          AOF logs every write operation received by server
+          single thread, support cluster model,persistence mechanism,various datatype
+
+         usage configure all environment
+
+
+ sql and no-sql
+ vertical /horizontal scaling
+ add more processing power/ more servers, machines,nodes
+
+ ACID: atomicity consistency isolation durability
+
+ index: cluster index: defines the order in which data is stored in table, one cluster per table
+        no-cluster index:
+  data structure of indexing :b tree,k-d tree
+
+ Q: sql tuning running slow
+   use execution plan to find cause
+   reduce joins, remove used join or join condition
+   3 join algorithm: hash-unsorted merge-sorted index-index existed
+
+ transaction: series of action by users, read,update... ACID
